@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/cpp_review/default.png">
 <meta property="article:published_time" content="2022-07-14T08:11:03.000Z">
-<meta property="article:modified_time" content="2022-07-14T16:00:21.623Z">
+<meta property="article:modified_time" content="2022-07-14T16:50:34.119Z">
 <meta property="article:author" content="宝盖于-BaoGaiYu">
 <meta property="article:tag" content="C++">
 <meta property="article:tag" content="面向对象编程">
@@ -236,7 +236,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          3.6k 字
+          4.5k 字
         
       </span>
     
@@ -247,7 +247,7 @@
         
         
         
-          30 分钟
+          38 分钟
         
       </span>
     
@@ -339,6 +339,23 @@
 <li>类中可以设置<code>变量</code>作为数据成员，也可以设置<code>函数</code>作为成员函数。</li>
 <li>类中的成员可以设置<code>成员访问限定符</code>，即<code>public</code>，<code>protected</code>，<code>private</code>。如果一个成员的上方没有成员访问限定符，则默认为<code>private</code>。</li>
 </ul>
+<h3 id="成员函数的类内与类外定义"><a href="#成员函数的类内与类外定义" class="headerlink" title="成员函数的类内与类外定义"></a>成员函数的类内与类外定义</h3><h4 id="类内定义"><a href="#类内定义" class="headerlink" title="类内定义"></a>类内定义</h4><p>如上一段代码，函数定义就属于类内定义。直接将函数体写在类声明内部。</p>
+<h5 id="内联函数-inline关键字"><a href="#内联函数-inline关键字" class="headerlink" title="内联函数-inline关键字"></a>内联函数-inline关键字</h5><p>可以在函数首部的前方添加<code>inline</code>关键字，使其成为<code>内联函数</code>，其效果为，在调用到该函数的地方直接将函数体内的代码展开，<strong>节省了调用的过程所花费的时间</strong>。</p>
+<ul>
+<li><code>inline</code>说明对于编译器只是一个<strong>建议</strong>，编译器可以选择忽略这个建议。例如将一个长达1000行的函数声明为<code>内联函数</code>，编译器会无视这个<code>inline</code>的建议，仍旧将这个函数设置为普通函数。</li>
+<li>在类内直接定义的函数，不需要<code>inline</code>修饰，编译器也<strong>一般</strong>会将其化为<code>内联函数</code>。</li>
+</ul>
+<h6 id="慎用内联函数"><a href="#慎用内联函数" class="headerlink" title="慎用内联函数"></a>慎用内联函数</h6><ol>
+<li><code>内联函数</code>在每次调用函数的位置复制函数的代码。如果执行函数体内代码的时间，相比于函数调用的开销较大，那么效率的收获会很少。所以一般会选择<strong>频繁调用</strong>和<strong>代码量较少</strong>的函数设置为<code>内联函数</code>。</li>
+<li>每一处<code>内联函数</code>的调用都会复制代码，会增加程序的代码量，增加内存开销。</li>
+<li>函数中若带有循环，则不宜选用<code>内联函数</code>。函数本身运行时间就比调用时间长，已经没有必要使用<code>内联函数</code>。</li>
+</ol>
+<h5 id="类外定义"><a href="#类外定义" class="headerlink" title="类外定义"></a>类外定义</h5><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">rectangle</span>&#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-built_in">rectangle</span>(<span class="hljs-type">double</span>=<span class="hljs-number">1</span>,<span class="hljs-type">double</span>=<span class="hljs-number">1</span>);<span class="hljs-comment">//tips:函数声明时，形参类型必须写，但是形参名可以不用写。</span><br>    ~<span class="hljs-built_in">rectangle</span>();				 <span class="hljs-comment">//		默认值最好写在声明中，这是一个好习惯。</span><br>    <span class="hljs-function"><span class="hljs-type">double</span> <span class="hljs-title">setData</span><span class="hljs-params">(<span class="hljs-type">double</span>,<span class="hljs-type">double</span>)</span></span>;<br>   	<span class="hljs-function"><span class="hljs-type">double</span> <span class="hljs-title">area</span><span class="hljs-params">()</span></span>;<br>    <span class="hljs-function"><span class="hljs-type">double</span> <span class="hljs-title">perimeter</span><span class="hljs-params">()</span></span>;<br><span class="hljs-keyword">private</span>:<br>    <span class="hljs-type">double</span> len;<br>    <span class="hljs-type">double</span> wid;<br>&#125;;<br><br>rectangle::<span class="hljs-built_in">rectangle</span>(<span class="hljs-type">double</span> l=<span class="hljs-number">1</span>,<span class="hljs-type">double</span> w=<span class="hljs-number">1</span>)&#123;<br>    len=l;wid=w;<br>&#125;<br>...<br><span class="hljs-function"><span class="hljs-type">double</span> <span class="hljs-title">rectangle::area</span><span class="hljs-params">()</span></span>&#123;<br>	<span class="hljs-keyword">return</span> len*wid;<br>&#125;<br>...<br></code></pre></td></tr></table></figure>
+
+<p>类外定义需要现在类内写出<code>函数声明</code>，然后在类外通过<code>返回值类型  类域分辨名::函数名(形参列表)</code>来进行<code>函数定义</code>。</p>
+<ul>
+<li><strong>建议：</strong>函数定义都应该在类外进行，并置于cpp文件内；而声明均在类内，并置于头文件内。这是一个好习惯。</li>
+</ul>
 <h2 id="怎样使用一个类和对象"><a href="#怎样使用一个类和对象" class="headerlink" title="怎样使用一个类和对象"></a>怎样使用一个类和对象</h2><h3 id="定义一个对象"><a href="#定义一个对象" class="headerlink" title="定义一个对象"></a>定义一个对象</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs cpp">Rectangle rec1;<br><span class="hljs-function">Rectangle <span class="hljs-title">rec2</span><span class="hljs-params">(<span class="hljs-number">2</span>,<span class="hljs-number">2</span>)</span></span>;<br></code></pre></td></tr></table></figure>
 
 <p>如此，便定义了<code>rec1</code>和<code>rec2</code>这两个对象。其中<code>rec1</code>使用的是构造函数的默认参数，一个长一宽一的矩形，而<code>rec2</code>是一个长二宽二的矩形。</p>
@@ -358,7 +375,7 @@
 
 <p>如此，便是一个最简单的构造函数，它没有任何参数，也没有任何实质性的作用。</p>
 <ul>
-<li><p><strong>重要</strong>：如果用户没有自定义<strong>任何</strong>类型的构造函数,则编译器会提供<strong>缺省的无参构造函数</strong>，即上方的构造函数,没有任何形式的参数，并且函数体为空。</p>
+<li><p><strong>重要</strong>：如果用户没有自定义<strong>任何</strong>类型的构造函数,则编译器会提供<strong>缺省的无参构造函数</strong>，即上方的构造函数,没有任何形式的参数，并且函数体为空。因此，常常显式地给出一个<code>public</code>的无参构造函数，以便定义对象时被系统自动调用。</p>
 <p>tips：即使用户定义的是<code>含参的构造函数</code>或是<code>拷贝构造函数</code>，该缺省的无参构造函数也不会提供。</p>
 </li>
 </ul>
