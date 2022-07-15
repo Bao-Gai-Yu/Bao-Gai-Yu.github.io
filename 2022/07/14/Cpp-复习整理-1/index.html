@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/cpp_review/default.png">
 <meta property="article:published_time" content="2022-07-14T08:11:03.000Z">
-<meta property="article:modified_time" content="2022-07-15T04:44:52.111Z">
+<meta property="article:modified_time" content="2022-07-15T04:59:05.813Z">
 <meta property="article:author" content="宝盖于-BaoGaiYu">
 <meta property="article:tag" content="C++">
 <meta property="article:tag" content="面向对象编程">
@@ -236,7 +236,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          8k 字
+          8.2k 字
         
       </span>
     
@@ -247,7 +247,7 @@
         
         
         
-          68 分钟
+          69 分钟
         
       </span>
     
@@ -363,8 +363,8 @@
 
 <ol>
 <li><code>const</code>作为函数的一部分，可以作为<code>函数重载</code>的区分，因此在<code>声明</code>和<code>定义</code>时都必须要有<code>const</code>关键字。</li>
-<li>而在函数调用时，<code>const</code><strong>不一定</strong>是必须的。若<strong>不是同时具有</strong>两个同类型同名同参的函数，区别仅仅<code>const</code>关键字，这时候函数调用时<code>const</code>就不是必须的。</li>
-<li>常成员函数可以引用**<code>const</code><strong>或者</strong><code>非const</code><strong>数据成员，但是不能“</strong>修改<strong>”它们。即：</strong><code>常成员函数不能更新任何数据成员</code>**。因此，常成员函数多用于数据的输出等操作。</li>
+<li>而在函数调用时，<code>const</code>不一定<strong>是必须的。若</strong>不是同时具有**两个同类型同名同参的函数，区别仅仅<code>const</code>关键字，这时候函数调用时<code>const</code>就不是必须的。</li>
+<li>常成员函数可以引用<code>const</code>或者<code>非const</code>数据成员，但是不能“<strong>修改</strong>”它们。即：<code>常成员函数不能更新任何数据成员</code>。因此，常成员函数多用于数据的输出等操作。</li>
 <li><code>const</code>成员函数不能调用<code>非const</code>成员函数，而<code>非const</code>成员函数可以调用<code>const</code>成员函数。</li>
 </ol>
 <h3 id="静态成员"><a href="#静态成员" class="headerlink" title="静态成员"></a>静态成员</h3><h4 id="静态数据成员"><a href="#静态数据成员" class="headerlink" title="静态数据成员"></a>静态数据成员</h4><p>是一种特殊的数据成员，以关键字<code>static</code>开头。</p>
@@ -394,10 +394,13 @@
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs cpp">obj::<span class="hljs-built_in">fun</span>();<br>myObj::<span class="hljs-built_in">fun</span>();<br></code></pre></td></tr></table></figure>
 
 <ol>
-<li>静态成员函数不隐含<code>this</code>指针，故<strong>不能访问非静态成员</strong>，通常只用于访问静态成员。但非静态成员函数可以调用静态成员函数。</li>
-<li></li>
+<li><p>静态成员函数<strong>不隐含<code>this</code>指针</strong>，故<strong>不能访问非静态成员</strong>，通常只用于访问静态成员。但非静态成员函数可以调用静态成员函数。</p>
+<p>而普通成员函数具有<code>this</code>指针，访问类内的成员时，直接写数据成员名或成员函数名，前方自动略写了<code>(*this).</code>这种访问成为<strong>默认访问</strong>。</p>
+</li>
+<li><p>不能同时用<code>static</code>和<code>virtual</code>两个关键字修饰一个成员函数，即：<strong>虚函数不能是static函数</strong>。因为虚函数必须要通过对象调用，必须要有隐藏的<code>this</code>指针。并且<code>static</code>成员函数是在编译时<strong>静态决议</strong>的，而<code>virtual</code>成员函数是<strong>动态决议</strong>的（运行时才绑定）。</p>
+</li>
 </ol>
-<h3 id="友元函数"><a href="#友元函数" class="headerlink" title="友元函数"></a>友元函数</h3><h3 id="成员函数的类内与类外定义"><a href="#成员函数的类内与类外定义" class="headerlink" title="成员函数的类内与类外定义"></a>成员函数的类内与类外定义</h3><h4 id="类内定义"><a href="#类内定义" class="headerlink" title="类内定义"></a>类内定义</h4><p>如上一段代码，函数定义就属于类内定义。直接将函数体写在类声明内部。</p>
+<h3 id="友元函数"><a href="#友元函数" class="headerlink" title="友元函数"></a>友元函数</h3><h4 id="友元类"><a href="#友元类" class="headerlink" title="友元类"></a>友元类</h4><h4 id="友元函数-1"><a href="#友元函数-1" class="headerlink" title="友元函数"></a>友元函数</h4><h4 id="友元成员"><a href="#友元成员" class="headerlink" title="友元成员"></a>友元成员</h4><h4 id="友元的注意点"><a href="#友元的注意点" class="headerlink" title="友元的注意点"></a>友元的注意点</h4><h3 id="成员函数的类内与类外定义"><a href="#成员函数的类内与类外定义" class="headerlink" title="成员函数的类内与类外定义"></a>成员函数的类内与类外定义</h3><h4 id="类内定义"><a href="#类内定义" class="headerlink" title="类内定义"></a>类内定义</h4><p>如上一段代码，函数定义就属于类内定义。直接将函数体写在类声明内部。</p>
 <h5 id="内联函数-inline关键字"><a href="#内联函数-inline关键字" class="headerlink" title="内联函数-inline关键字"></a>内联函数-inline关键字</h5><p>可以在函数首部的前方添加<code>inline</code>关键字，使其成为<code>内联函数</code>，其效果为，在调用到该函数的地方直接将函数体内的代码展开，<strong>节省了调用的过程所花费的时间</strong>。</p>
 <ul>
 <li><code>inline</code>说明对于编译器只是一个<strong>建议</strong>，编译器可以选择忽略这个建议。例如将一个长达1000行的函数声明为<code>内联函数</code>，编译器会无视这个<code>inline</code>的建议，仍旧将这个函数设置为普通函数。</li>
@@ -423,7 +426,7 @@
 <ol>
 <li><p>常对象<strong>必须在定义时初始化</strong>，并且不能被更新。</p>
 </li>
-<li><p>为了防止<code>非const</code>成员函数修改常对象中的数据成员的值，**常对象只能调用<code>const成员函数</code>,以及<code>构造函数</code>和<code>析构函数</code>**。</p>
+<li><p>为了防止<code>非const</code>成员函数修改常对象中的数据成员的值，**常对象只能调用<code>const成员函数</code>,以及<code>构造函数</code>和<code>析构函数</code>。</p>
 <ul>
 <li><p>为何如此决绝？</p>
 <p>因为程序设计时，<code>函数声明</code>与<code>函数定义</code>大概率不会存在于同一个<code>源文件</code>中，而程序编译时是以<code>源文件</code>为单位的，因此，系统无法检测出<code>函数声明</code>与<code>函数定义</code>之间是否存在矛盾（例子：函数声明了不作修改，但是函数定义中却对某个数据成员进行了“不小心“的修改），只有等到了连接(link)甚至是运行阶段才能发现，因此编译系统值检查函数声明，只要发现调用了<code>非const</code>的成员函数，就直接报错，<strong>即使这个函数并不会对任何数据成员进行修改</strong>。</p>
@@ -532,12 +535,12 @@
 <li>程序运行结束时。</li>
 </ol>
 <p>简言之就是：一个对象消亡时（<code>生命周期</code>结束），会调用<code>析构函数</code>。</p>
-<h2 id="赋值运算符的重载函数"><a href="#赋值运算符的重载函数" class="headerlink" title="赋值运算符的重载函数"></a>赋值运算符的重载函数</h2><p>在类定义时，系统会给出四个缺省的函数。它们是<code>无参构造函数</code>，<code>拷贝构造函数</code>，<code>析构函数</code>。而剩下的一个，就是**<code>赋值运算符的重载函数</code>**。</p>
+<h2 id="赋值运算符的重载函数"><a href="#赋值运算符的重载函数" class="headerlink" title="赋值运算符的重载函数"></a>赋值运算符的重载函数</h2><p>在类定义时，系统会给出四个缺省的函数。它们是<code>无参构造函数</code>，<code>拷贝构造函数</code>，<code>析构函数</code>。而剩下的一个，就是<code>赋值运算符的重载函数</code>。</p>
 <p>缺省的赋值运算符重载函数形式为：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs cpp">类名&amp; <span class="hljs-keyword">operator</span>= (<span class="hljs-type">const</span> 类名&amp; right)&#123;<br>    (*<span class="hljs-keyword">this</span>).成员=right.成员;<br>    ...<br>    <span class="hljs-keyword">return</span>  *<span class="hljs-keyword">this</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<p>实现的是成员的简单对拷，属于**<code>浅拷贝</code>**。</p>
-<p>那么前面也说过，最好是实现**<code>深拷贝</code>**，所以需要手写赋值运算符的重载函数。</p>
+<p>实现的是成员的简单对拷，属于<code>浅拷贝</code>。</p>
+<p>那么前面也说过，最好是实现<code>深拷贝</code>，所以需要手写赋值运算符的重载函数。</p>
 
                 
               </div>
