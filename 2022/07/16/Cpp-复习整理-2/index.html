@@ -16,16 +16,16 @@
   <meta name="author" content="宝盖于-BaoGaiYu">
   <meta name="keywords" content="宝盖于">
   
-    <meta name="description" content="模板函数模板为什么要定义模板？众嗦粥汁，C++是一种强类型语言，对于变量的类型必须要显式指出。那么就会存在不灵活的问题。 12345678910&#x2F;&#x2F;举个例子，求一个数绝对值的函数，而数值的类型可以有int，float，double等，那么就需要定义不同的函数int Abs(int a)&amp;#123;	return a&gt;0?a:-a;&amp;#125;float Abs(float a)&amp;#123;">
+    <meta name="description" content="书接上回 模板函数模板为什么要定义模板？众嗦粥汁，C++是一种强类型语言，对于变量的类型必须要显式指出。那么就会存在不灵活的问题。 12345678910&#x2F;&#x2F;举个例子，求一个数绝对值的函数，而数值的类型可以有int，float，double等，那么就需要定义不同的函数int Abs(int a)&amp;#123;	return a&gt;0?a:-a;&amp;#125;float Abs(float a)&amp;#">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Cpp_复习整理_2">
 <meta property="og:url" content="https://bao-gai-yu.github.io/2022/07/16/Cpp-%E5%A4%8D%E4%B9%A0%E6%95%B4%E7%90%86-2/index.html">
 <meta property="og:site_name" content="宝盖于的博客">
-<meta property="og:description" content="模板函数模板为什么要定义模板？众嗦粥汁，C++是一种强类型语言，对于变量的类型必须要显式指出。那么就会存在不灵活的问题。 12345678910&#x2F;&#x2F;举个例子，求一个数绝对值的函数，而数值的类型可以有int，float，double等，那么就需要定义不同的函数int Abs(int a)&amp;#123;	return a&gt;0?a:-a;&amp;#125;float Abs(float a)&amp;#123;">
+<meta property="og:description" content="书接上回 模板函数模板为什么要定义模板？众嗦粥汁，C++是一种强类型语言，对于变量的类型必须要显式指出。那么就会存在不灵活的问题。 12345678910&#x2F;&#x2F;举个例子，求一个数绝对值的函数，而数值的类型可以有int，float，double等，那么就需要定义不同的函数int Abs(int a)&amp;#123;	return a&gt;0?a:-a;&amp;#125;float Abs(float a)&amp;#">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://bao-gai-yu.github.io/img/cpp_review/default.png">
 <meta property="article:published_time" content="2022-07-16T02:25:17.000Z">
-<meta property="article:modified_time" content="2022-07-16T06:39:58.036Z">
+<meta property="article:modified_time" content="2022-07-16T11:38:33.362Z">
 <meta property="article:author" content="宝盖于-BaoGaiYu">
 <meta property="article:tag" content="C++">
 <meta property="article:tag" content="面向对象编程">
@@ -236,7 +236,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.5k 字
+          2k 字
         
       </span>
     
@@ -247,7 +247,7 @@
         
         
         
-          13 分钟
+          17 分钟
         
       </span>
     
@@ -298,7 +298,8 @@
             
               <div class="markdown-body">
                 
-                <h1 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h1><h2 id="函数模板"><a href="#函数模板" class="headerlink" title="函数模板"></a>函数模板</h2><h3 id="为什么要定义模板？"><a href="#为什么要定义模板？" class="headerlink" title="为什么要定义模板？"></a>为什么要定义模板？</h3><p>众嗦粥汁，<code>C++</code>是一种<strong>强类型语言</strong>，对于变量的类型必须要<strong>显式指出</strong>。那么就会存在<strong>不灵活</strong>的问题。</p>
+                <p>书接上回</p>
+<h1 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h1><h2 id="函数模板"><a href="#函数模板" class="headerlink" title="函数模板"></a>函数模板</h2><h3 id="为什么要定义模板？"><a href="#为什么要定义模板？" class="headerlink" title="为什么要定义模板？"></a>为什么要定义模板？</h3><p>众嗦粥汁，<code>C++</code>是一种<strong>强类型语言</strong>，对于变量的类型必须要<strong>显式指出</strong>。那么就会存在<strong>不灵活</strong>的问题。</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">//举个例子，求一个数绝对值的函数，而数值的类型可以有int，float，double等，那么就需要定义不同的函数</span><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">Abs</span><span class="hljs-params">(<span class="hljs-type">int</span> a)</span></span>&#123;<br>	<span class="hljs-keyword">return</span> a&gt;<span class="hljs-number">0</span>?a:-a;<br>&#125;<br><span class="hljs-function"><span class="hljs-type">float</span> <span class="hljs-title">Abs</span><span class="hljs-params">(<span class="hljs-type">float</span> a)</span></span>&#123;<br>	<span class="hljs-keyword">return</span> a&gt;<span class="hljs-number">0</span>?a:-a;<br>&#125;<br><span class="hljs-function"><span class="hljs-type">double</span> <span class="hljs-title">Abs</span><span class="hljs-params">(<span class="hljs-type">double</span> a)</span></span>&#123;<br>	<span class="hljs-keyword">return</span> a&gt;<span class="hljs-number">0</span>?a:-a;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <p>不难发现，上面这三个函数，除了<code>函数类型</code>和<code>参数类型</code>，其余部分完全一样，但是却需要三段几乎相同的函数代码。</p>
@@ -327,12 +328,25 @@
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">obj</span>&#123;<br><span class="hljs-keyword">public</span>:<br>	<span class="hljs-keyword">typedef</span> <span class="hljs-type">int</span> myType;<br>......<br>&#125;;<br><span class="hljs-function"><span class="hljs-keyword">template</span>&lt;<span class="hljs-keyword">class</span> T&gt;</span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">fun</span><span class="hljs-params">(T myObj)</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">typedef</span> <span class="hljs-keyword">typename</span> T::myType myNewType;	<span class="hljs-comment">//重点在这里</span><br>    myNewType ans = myObj.data;<br>    <span class="hljs-keyword">return</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <p>这里的<code>typename</code>就是在告诉<code>C++编译器</code>，在其后方是一个<strong>类型的名称</strong>，而不是<code>T类型</code>（此例子中假定为<code>obj类</code>）中的一个<strong>静态成员</strong>。如果没有<code>typename</code>，编译器就无法得知<code>T::myType</code>的确切含义，存在<strong>二义性错误</strong>，编译就不会通过。</p>
-<h3 id="类模板"><a href="#类模板" class="headerlink" title="类模板"></a>类模板</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">//举例</span><br><span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">class</span> <span class="hljs-title class_">T1</span>,<span class="hljs-keyword">class</span> <span class="hljs-title class_">T2</span>,<span class="hljs-type">int</span> nMax&gt;<br><span class="hljs-keyword">class</span> <span class="hljs-title class_">CType</span>&#123;<br><span class="hljs-keyword">public</span>:<br>	T1 m_t1Data;<br>    T2 m_t2Data[nMax];<br>  	<span class="hljs-built_in">CType</span>();<br>    ~<span class="hljs-built_in">CType</span>();<br>    <span class="hljs-function">T1 <span class="hljs-title">fun</span><span class="hljs-params">(T1 v1)</span></span>;<br>&#125;;<br></code></pre></td></tr></table></figure>
+<h2 id="类模板"><a href="#类模板" class="headerlink" title="类模板"></a>类模板</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">//举例</span><br><span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">class</span> <span class="hljs-title class_">T1</span>,<span class="hljs-keyword">class</span> <span class="hljs-title class_">T2</span>,<span class="hljs-type">int</span> nMax&gt;<br><span class="hljs-keyword">class</span> <span class="hljs-title class_">CType</span>&#123;<br><span class="hljs-keyword">public</span>:<br>	T1 m_t1Data;<br>    T2 m_t2Data[nMax];<br>  	<span class="hljs-built_in">CType</span>();<br>    ~<span class="hljs-built_in">CType</span>();<br>    <span class="hljs-function">T1 <span class="hljs-title">fun</span><span class="hljs-params">(T1 v1)</span></span>;<br>&#125;;<br></code></pre></td></tr></table></figure>
 
 <p>这是一个简单的<strong>类模板</strong>，具有两个类参以及一个形参。形参不一定要在类参的后方。</p>
 <p>有了模板还要对它进行<strong>实例化</strong>来使用。诸如：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cpp">CType&lt;<span class="hljs-type">int</span>,<span class="hljs-type">int</span>,<span class="hljs-number">50</span>&gt; myObj;<br></code></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cpp">CType&lt;<span class="hljs-type">int</span>,<span class="hljs-type">double</span>,<span class="hljs-number">50</span>&gt; myObj;<br></code></pre></td></tr></table></figure>
 
+<p>这样<code>CType</code>类中的<code>m_t1Data</code>和<code>m_t2Data[nMax]</code>就被分别实例化成了<code>int</code>型和<code>double</code>型数组。并且<code>nMax</code>的值为<code>50</code>。</p>
+<p>类模板中还存在一个函数声明<code>fun</code>，那么有了声明，肯定还要有定义，模板里的函数要怎么定义呢？</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">class</span> <span class="hljs-title class_">T1</span>,<span class="hljs-keyword">class</span> <span class="hljs-title class_">T2</span>,<span class="hljs-type">int</span> nMax&gt;<br>T1 CType&lt;T1,T2,nMax&gt;::<span class="hljs-built_in">fun</span>(T1 v1)&#123;<br>    ...<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ol>
+<li><p>类模板的成员函数起始于<code>template</code>，结束于函数体的右花括号<code>&#125;</code>。</p>
+</li>
+<li><p><code>CType&lt;T1,T2,nMax&gt;::</code>是类模板的<strong>“变通的类域分辨符”</strong>。</p>
+<p>且<strong>变通的类域分辨符</strong>的尖括号中，<strong>类参</strong>需要去掉<code>class/typename</code>，而<strong>形参</strong>需要去掉<code>int</code>之类的类型。<strong>次序</strong>和<strong>个数</strong>要对应不变。</p>
+<p>当模板被实例化，<code>T1，T2，nMax</code>明确之时就是这个<strong>“变通的类域分辨符”</strong>固定之时。</p>
+</li>
+</ol>
+<h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><p>由于类模板只有在实例化的时候才被确定，所以有些明显的概念错误可能逃过编译器的检查。因此在建立类模板的时候，最好事先进行特定类的具体编程，然后再选择若干类名作为类型参量，进行“特定类”到“通用类”的升级处理，即<strong>反向设计通用类</strong>。</p>
 
                 
               </div>
