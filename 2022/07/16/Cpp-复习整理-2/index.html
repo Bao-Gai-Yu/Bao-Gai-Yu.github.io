@@ -16,16 +16,16 @@
   <meta name="author" content="宝盖于-BaoGaiYu">
   <meta name="keywords" content="宝盖于">
   
-    <meta name="description" content="书接上回 模板函数模板为什么要定义模板？众嗦粥汁，C++是一种强类型语言，对于变量的类型必须要显式指出。那么就会存在不灵活的问题。 12345678910&#x2F;&#x2F;举个例子，求一个数绝对值的函数，而数值的类型可以有int，float，double等，那么就需要定义不同的函数int Abs(int a)&amp;#123;	return a&gt;0?a:-a;&amp;#125;float Abs(float a)&amp;#">
+    <meta name="description" content="书接上回本篇将会总结一下C++中的模板以及重载两大模块。 模板函数模板为什么要定义模板？众嗦粥汁，C++是一种强类型语言，对于变量的类型必须要显式指出。那么就会存在不灵活的问题。 12345678910&#x2F;&#x2F;举个例子，求一个数绝对值的函数，而数值的类型可以有int，float，double等，那么就需要定义不同的函数int Abs(int a)&amp;#123;	return a&gt;0?a:-a;&amp;#">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Cpp_复习整理_2">
 <meta property="og:url" content="https://bao-gai-yu.github.io/2022/07/16/Cpp-%E5%A4%8D%E4%B9%A0%E6%95%B4%E7%90%86-2/index.html">
 <meta property="og:site_name" content="宝盖于的博客">
-<meta property="og:description" content="书接上回 模板函数模板为什么要定义模板？众嗦粥汁，C++是一种强类型语言，对于变量的类型必须要显式指出。那么就会存在不灵活的问题。 12345678910&#x2F;&#x2F;举个例子，求一个数绝对值的函数，而数值的类型可以有int，float，double等，那么就需要定义不同的函数int Abs(int a)&amp;#123;	return a&gt;0?a:-a;&amp;#125;float Abs(float a)&amp;#">
+<meta property="og:description" content="书接上回本篇将会总结一下C++中的模板以及重载两大模块。 模板函数模板为什么要定义模板？众嗦粥汁，C++是一种强类型语言，对于变量的类型必须要显式指出。那么就会存在不灵活的问题。 12345678910&#x2F;&#x2F;举个例子，求一个数绝对值的函数，而数值的类型可以有int，float，double等，那么就需要定义不同的函数int Abs(int a)&amp;#123;	return a&gt;0?a:-a;&amp;#">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://bao-gai-yu.github.io/img/cpp_review/default.png">
 <meta property="article:published_time" content="2022-07-16T02:25:17.000Z">
-<meta property="article:modified_time" content="2022-07-17T05:07:03.779Z">
+<meta property="article:modified_time" content="2022-07-17T05:56:29.009Z">
 <meta property="article:author" content="宝盖于-BaoGaiYu">
 <meta property="article:tag" content="C++">
 <meta property="article:tag" content="面向对象编程">
@@ -236,7 +236,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          4.6k 字
+          4.8k 字
         
       </span>
     
@@ -247,7 +247,7 @@
         
         
         
-          39 分钟
+          41 分钟
         
       </span>
     
@@ -298,7 +298,7 @@
             
               <div class="markdown-body">
                 
-                <p>书接上回</p>
+                <h1 id="书接上回"><a href="#书接上回" class="headerlink" title="书接上回"></a>书接上回</h1><p>本篇将会总结一下<strong>C++中的模板</strong>以及<strong>重载</strong>两大模块。</p>
 <h1 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h1><h2 id="函数模板"><a href="#函数模板" class="headerlink" title="函数模板"></a>函数模板</h2><h3 id="为什么要定义模板？"><a href="#为什么要定义模板？" class="headerlink" title="为什么要定义模板？"></a>为什么要定义模板？</h3><p>众嗦粥汁，<code>C++</code>是一种<strong>强类型语言</strong>，对于变量的类型必须要<strong>显式指出</strong>。那么就会存在<strong>不灵活</strong>的问题。</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">//举个例子，求一个数绝对值的函数，而数值的类型可以有int，float，double等，那么就需要定义不同的函数</span><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">Abs</span><span class="hljs-params">(<span class="hljs-type">int</span> a)</span></span>&#123;<br>	<span class="hljs-keyword">return</span> a&gt;<span class="hljs-number">0</span>?a:-a;<br>&#125;<br><span class="hljs-function"><span class="hljs-type">float</span> <span class="hljs-title">Abs</span><span class="hljs-params">(<span class="hljs-type">float</span> a)</span></span>&#123;<br>	<span class="hljs-keyword">return</span> a&gt;<span class="hljs-number">0</span>?a:-a;<br>&#125;<br><span class="hljs-function"><span class="hljs-type">double</span> <span class="hljs-title">Abs</span><span class="hljs-params">(<span class="hljs-type">double</span> a)</span></span>&#123;<br>	<span class="hljs-keyword">return</span> a&gt;<span class="hljs-number">0</span>?a:-a;<br>&#125;<br></code></pre></td></tr></table></figure>
 
@@ -433,7 +433,7 @@
 
 </li>
 </ol>
-<h3 id="运算符重载的规则："><a href="#运算符重载的规则：" class="headerlink" title="运算符重载的规则："></a>运算符重载的规则：</h3><ol>
+<h3 id="运算符重载的规则"><a href="#运算符重载的规则" class="headerlink" title="运算符重载的规则"></a>运算符重载的规则</h3><ol>
 <li><p>绝大部分的运算符可以重载，只有下列运算符<strong>不能重载</strong>，它们是：</p>
 <p>1）<code>.</code>        成员访问运算符</p>
 <p>2）<code>.*</code>、<code>-&gt;*</code>      成员指针访问运算符</p>
@@ -462,8 +462,14 @@
 </li>
 </ul>
 </li>
+<li><p>用于类对象的运算符<strong>一般必须</strong>重载，但<code>=</code>(赋值运算符) 和 <code>&amp;</code>(地址运算符) 不必用户重载。</p>
+</li>
+<li><p>习惯上建议将重载运算符的功能与逻辑，类似于该运算符作用于标准类型数据时所实现的功能。</p>
+</li>
+<li><p>运算符重载函数可以是类的成员函数，也可以是类的友元函数，还可以是既非类的成员函数也不是友元函数的普通函数。</p>
+</li>
 </ol>
-
+<h2 id="前置-与后置-的重载"><a href="#前置-与后置-的重载" class="headerlink" title="前置++与后置++的重载"></a>前置++与后置++的重载</h2><h2 id="输入输出流运算符的重载"><a href="#输入输出流运算符的重载" class="headerlink" title="输入输出流运算符的重载"></a>输入输出流运算符的重载</h2><h2 id="类型转换运算符的重载"><a href="#类型转换运算符的重载" class="headerlink" title="类型转换运算符的重载"></a>类型转换运算符的重载</h2>
                 
               </div>
             
