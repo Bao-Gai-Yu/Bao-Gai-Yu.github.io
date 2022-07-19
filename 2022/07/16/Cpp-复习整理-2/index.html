@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://bao-gai-yu.github.io/img/cpp_review/default.png">
 <meta property="article:published_time" content="2022-07-16T02:25:17.000Z">
-<meta property="article:modified_time" content="2022-07-19T05:26:45.700Z">
+<meta property="article:modified_time" content="2022-07-19T10:27:16.249Z">
 <meta property="article:author" content="宝盖于-BaoGaiYu">
 <meta property="article:tag" content="C++">
 <meta property="article:tag" content="模板">
@@ -238,7 +238,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          9.8k 字
+          12k 字
         
       </span>
     
@@ -249,7 +249,7 @@
         
         
         
-          82 分钟
+          99 分钟
         
       </span>
     
@@ -557,7 +557,7 @@
 <p>输出结果为：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs cpp">Give me a string:<span class="hljs-number">123456789</span><br>a = <span class="hljs-number">1</span><br>b = <span class="hljs-number">2</span><br>str = <span class="hljs-number">3456</span><br></code></pre></td></tr></table></figure>
 
-<h2 id="输入流的一些函数"><a href="#输入流的一些函数" class="headerlink" title="输入流的一些函数"></a>输入流的一些函数</h2><ul>
+<h3 id="输入流的一些函数"><a href="#输入流的一些函数" class="headerlink" title="输入流的一些函数"></a>输入流的一些函数</h3><ul>
 <li><p><code>get</code>函数，有多种重载</p>
 <ol>
 <li><p><code>int get()</code> </p>
@@ -605,6 +605,7 @@
 </li>
 <li><p><code>read</code>函数</p>
 <p><code>istream&amp; read(char* buffer,int n);</code></p>
+<p>从输入流中读取<code>n</code>个字符，<strong>注意是n个，并不会在字符串末尾补’\0’。</strong>且<strong>没有结束符，必须读入n个字符</strong>，如果读取字符不足会继续等待输入。</p>
 </li>
 </ul>
 </li>
@@ -621,14 +622,193 @@
 <li><p><code>endl</code>和<code>\n</code>的区别</p>
 <p>这两个在输出的效果都是<strong>换行</strong>，但两者本质上是不同的。</p>
 <ul>
-<li><p><code>endl</code>实际上是一个<strong>函数模板</strong>，作为一个<code>IO操作符</code>，当输出缓冲区中插入一个<code>endl</code>，则不论缓冲区是否已满，都将<strong>立即输出流中的所有数据，然后插入一个换行符,并且此时缓冲区已被清空。</strong></p>
+<li><code>endl</code>实际上是一个<strong>函数模板</strong>，作为一个<code>IO操作符</code>，当输出缓冲区中插入一个<code>endl</code>，则不论缓冲区是否已满，都将<strong>立即输出流中的所有数据，然后插入一个换行符,并且此时缓冲区已被清空。</strong></li>
+</ul>
 </li>
 <li><p>而<code>\n</code>只是一个字符，与其它<code>ASCII字符</code>无异。</p>
 </li>
 </ul>
-</li>
+<h4 id="输出流的一些函数"><a href="#输出流的一些函数" class="headerlink" title="输出流的一些函数"></a>输出流的一些函数</h4><ul>
+<li><code>put</code>函数，输出<strong>单个</strong>字符</li>
+<li><code>write</code>函数，输出指定的<strong>字符串</strong></li>
+<li><code>tellp</code>函数，用于<strong>获取</strong>当前输出流指针的位置</li>
+<li><code>seekp</code>函数，用于<strong>设置</strong>输出流指针的位置</li>
 </ul>
-<h2 id="2-文件I-O-fstream"><a href="#2-文件I-O-fstream" class="headerlink" title="2)文件I/O - fstream"></a>2)文件I/O - fstream</h2><h2 id="3-串I-O-stringstream"><a href="#3-串I-O-stringstream" class="headerlink" title="3)串I/O - stringstream"></a>3)串I/O - stringstream</h2><h2 id="重载-gt-gt-和-lt-lt-运算符"><a href="#重载-gt-gt-和-lt-lt-运算符" class="headerlink" title="重载&gt;&gt;和&lt;&lt;运算符"></a>重载<code>&gt;&gt;</code>和<code>&lt;&lt;</code>运算符</h2><h1 id="本篇完"><a href="#本篇完" class="headerlink" title="本篇完~"></a>本篇完~</h1>
+<h3 id="流操纵算子"><a href="#流操纵算子" class="headerlink" title="*流操纵算子"></a>*流操纵算子</h3><table>
+<thead>
+<tr>
+<th align="center">流操纵算子</th>
+<th align="center">作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><code>dec</code></td>
+<td align="center">以十进制输出整数</td>
+</tr>
+<tr>
+<td align="center"><code>hex</code></td>
+<td align="center">以八进制输出整数</td>
+</tr>
+<tr>
+<td align="center"><code>oct</code></td>
+<td align="center">以十六进制输出整数</td>
+</tr>
+<tr>
+<td align="center"><code>fixed</code></td>
+<td align="center">以普通小数的形式输出浮点数</td>
+</tr>
+<tr>
+<td align="center"><code>scientific</code></td>
+<td align="center">以科学计数法形式输出浮点数</td>
+</tr>
+<tr>
+<td align="center"><code>left</code></td>
+<td align="center">左对齐，即宽度不足时将填充字符添加到右边</td>
+</tr>
+<tr>
+<td align="center"><code>right</code></td>
+<td align="center">右对齐，即宽度不足时将填充字符添加到左边</td>
+</tr>
+<tr>
+<td align="center"><code>setbase(b)</code></td>
+<td align="center">设置输出整数时的进制，b=8、10或16</td>
+</tr>
+<tr>
+<td align="center"><code>setw(w)</code></td>
+<td align="center">指定输出宽度为w或者读入w个字符（<strong>该算子所起的作用是一次性的</strong>）</td>
+</tr>
+<tr>
+<td align="center"><code>setfill(c)</code></td>
+<td align="center">设置填充字符，即宽度不足时用<code>c</code>填充，默认是<code>空格</code></td>
+</tr>
+<tr>
+<td align="center"><code>setprecision(n)</code></td>
+<td align="center">设置浮点数的精度为<code>n</code><br /><strong>在与</strong><code>fixed</code><strong>算子配合使用的情况下，n表示小数位数。</strong></td>
+</tr>
+<tr>
+<td align="center"><code>setiosflags(flag)</code></td>
+<td align="center">设置某一个标志的值为<code>1</code></td>
+</tr>
+<tr>
+<td align="center"><code>resetiosflags(flag)</code></td>
+<td align="center">设置某一个标志的值为<code>0</code></td>
+</tr>
+</tbody></table>
+<p>以下是<code>setiosflags(flag)</code>和<code>resetiosflags(flag)</code>中<code>flag</code>可以为的值：</p>
+<table>
+<thead>
+<tr>
+<th align="center">标志</th>
+<th align="center">作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><code>ios::left</code></td>
+<td align="center">输出数据在本域宽范围内向左对齐</td>
+</tr>
+<tr>
+<td align="center"><code>ios::right</code></td>
+<td align="center">输出数据在本域宽范围内向右对齐</td>
+</tr>
+<tr>
+<td align="center"><code>ios::internal</code></td>
+<td align="center">数值的符号位在域宽内向左对齐，数值向右对齐，中间由填充字符填充</td>
+</tr>
+<tr>
+<td align="center"><code>ios::dec</code></td>
+<td align="center">设置整数的基数为10</td>
+</tr>
+<tr>
+<td align="center"><code>ios::oct</code></td>
+<td align="center">设置整数的基数为8</td>
+</tr>
+<tr>
+<td align="center"><code>ios::hex</code></td>
+<td align="center">设置的整数的基数为16</td>
+</tr>
+<tr>
+<td align="center"><code>ios::showbase</code></td>
+<td align="center">强制输出整数的基数（八进制以0开头，十六进制以0x开头）</td>
+</tr>
+<tr>
+<td align="center"><code>ios::showpoint</code></td>
+<td align="center">强制输出浮点数的小数点和尾数0</td>
+</tr>
+<tr>
+<td align="center"><code>ios::uppercase</code></td>
+<td align="center">在以科学计数法格式E和以十六进制输出字母时以大写表示</td>
+</tr>
+<tr>
+<td align="center"><code>ios::showpos</code></td>
+<td align="center">对正数显示”+”号</td>
+</tr>
+<tr>
+<td align="center"><code>ios::scientific</code></td>
+<td align="center">浮点数以科学计数法格式输出</td>
+</tr>
+<tr>
+<td align="center"><code>ios::fixed</code></td>
+<td align="center">浮点数以定点格式（小数形式）输出</td>
+</tr>
+<tr>
+<td align="center"><code>ios::unitbuf</code></td>
+<td align="center">每次输出后刷新所有的流</td>
+</tr>
+<tr>
+<td align="center"><code>ios::stdio</code></td>
+<td align="center">每次输出后清除<code>stdout</code>和<code>stderr</code></td>
+</tr>
+</tbody></table>
+<h3 id="重载-gt-gt-和-lt-lt-运算符"><a href="#重载-gt-gt-和-lt-lt-运算符" class="headerlink" title="重载&gt;&gt;和&lt;&lt;运算符"></a>重载<code>&gt;&gt;</code>和<code>&lt;&lt;</code>运算符</h3><p>还没写</p>
+<h2 id="2-文件I-O-fstream"><a href="#2-文件I-O-fstream" class="headerlink" title="2)文件I/O - fstream"></a>2)文件I/O - fstream</h2><p>文件I/O不再对系统默认的I/O设备进行输入输出，因此<code>&lt;fstream&gt;</code>头文件中没有预先定义好的类似<code>cin</code>和<code>cout</code>的对象，需要用户自行定义<strong>文件流对象</strong>（<code>fin</code>和<code>fout</code>等），作为文件I/O流的载体。用户可以通过如下的语句，来定义文件对象：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs cpp">fstream myFile;<br>ifstream fin;<br>ofstream fout;<br></code></pre></td></tr></table></figure>
+
+<p>这样创建一个文件输入对象和一个文件输出对象，但是两者<strong>都没有绑定到对应的文件</strong>，因此无法完成任何输入输出操作。我们可以通过<code>fin.open(&quot;in.txt&quot;);</code>，即<strong>open函数</strong>来绑定一个文件，或者在定义对象时使用<strong>构造函数</strong>直接绑定一个文件<code>ofstream fout(&quot;out.txt&quot;);</code>。</p>
+<p>当我们绑定了一个文件之后，还要指定文件的使用方式是诸如只读、只写、既读又写、在文件末尾添加数据、以文本方式使用、以二进制方式使用等等。我们可以使用诸如<code>myFile(&quot;out.txt&quot;,ios::out | ios::app);</code>等语句，该语句表示<code>myFile</code>绑定了<code>out.txt</code>，并以“输出”和“追加”的方式使用 。以下是<strong>模式标记</strong>表格：</p>
+<table>
+<thead>
+<tr>
+<th align="center">模式标记</th>
+<th align="center">适用对象</th>
+<th align="center">作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><code>ios::in</code></td>
+<td align="center"><code>ifstream</code><br /><code>fstream</code></td>
+<td align="center">打开文件用于读取数据，如果文件不存在，则打开失败。<br />是<code>ifstream</code>和<code>ofstream</code>对象的默认值</td>
+</tr>
+<tr>
+<td align="center"><code>ios::out</code></td>
+<td align="center"><code>ofstream</code><br /><code>fstream</code></td>
+<td align="center">打开文件用于读取数据，<strong>如果文件不存在，则新建文件。</strong><br />如果文件已经存在，则打开时会<strong>清空文件的内容</strong>，除非带有<code>ios::in</code>或者<code>ios::app</code><br />是<code>ifstream</code>和<code>ofstream</code>对象的默认值</td>
+</tr>
+<tr>
+<td align="center"><code>ios::ate</code></td>
+<td align="center"><code>ifstream</code></td>
+<td align="center">打开一个文件，并将文件的<strong>读指针</strong>指向文件<strong>末尾</strong>。如果文件不存在，<br />则打开失败。并且，文件打开时，<strong>不会清空文件。</strong><br /><code>ate</code>是<strong>at the end</strong>的缩写</td>
+</tr>
+<tr>
+<td align="center"><code>ios::app</code></td>
+<td align="center"><code>ofstream</code><br /><code>fstream</code></td>
+<td align="center">打开文件，将文件<strong>写指针</strong>置于文件的<code>EOF</code>处，用于在文件末尾添加数据，如果<br />文件不存在，则<strong>新建</strong>该文件。如果顺利打开，则<strong>不清空</strong>文件。</td>
+</tr>
+<tr>
+<td align="center"><code>ios::trunc</code></td>
+<td align="center"><code>ofstream</code></td>
+<td align="center">打开文件时会<strong>清空</strong>内部存储的所有数据（如果文件已存在，则先删除该文件）<br />单独使用时与<code>ios::out</code>相同</td>
+</tr>
+<tr>
+<td align="center"><code>ios::binary</code></td>
+<td align="center"><code>ifstream</code><br /><code>ofstream</code><br /><code>fstream</code></td>
+<td align="center">以<strong>二进制</strong>的方式打开文件，缺省时以文本文件打开</td>
+</tr>
+</tbody></table>
+<p>使用完文件对象之后或者要换一个文件进行绑定，必须要先解除原来绑定的文件，通过<code>close</code>函数进行：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs cpp">fin.<span class="hljs-built_in">close</span>();<br>fout.<span class="hljs-built_in">close</span>();<br>myFile.<span class="hljs-built_in">close</span>();<br></code></pre></td></tr></table></figure>
+
+<h3 id="seekp、seekg和tellp、tellg"><a href="#seekp、seekg和tellp、tellg" class="headerlink" title="seekp、seekg和tellp、tellg"></a>seekp、seekg和tellp、tellg</h3><h2 id="3-串I-O-stringstream"><a href="#3-串I-O-stringstream" class="headerlink" title="3)串I/O - stringstream"></a>3)串I/O - stringstream</h2><p>暂不做讨论。</p>
+<h1 id="本篇完"><a href="#本篇完" class="headerlink" title="本篇完~"></a>本篇完~</h1>
                 
               </div>
             
