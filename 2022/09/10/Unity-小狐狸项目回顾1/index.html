@@ -16,26 +16,27 @@
   <meta name="author" content="宝盖于-BaoGaiYu">
   <meta name="keywords" content="宝盖于">
   
-    <meta name="description" content="水一篇CMD常用指令   盘符名称+冒号 例：G: 作用：切换到某个盘  dir 作用：显示当前路径下的所有文件和文件夹，包括隐藏文件！  cd 目录 作用：进入一个单级目录 tips：不一定完整输入目录名称，输入开头之后可以按Tab键自动补全  cd .. 作用：返回上一级目录  cd 目录1\目录2 例：cd MyBlog\source\_posts 作用：进入多级目录  cd \ 作用：回到">
+    <meta name="description" content="Unity引擎随着技术的不断进步，生产力正在不断的提高。在21世纪的今天，我们得以站在前人的肩膀上，利用前辈们不断积累下来的技术，使用游戏引擎方便的进行游戏开发。 今年暑假，我跟着B站up主@M_studio的视频教程，完成了“小狐狸”项目demo的开发。如果只是学过，做完了。那也仅仅只是做完了，如果不进行整理，那学习中的收获只会是暂时的，因此，我会用几篇博客文章，来对我的开发过程进行整理和回顾。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CMD常用指令">
-<meta property="og:url" content="https://bao-gai-yu.github.io/2022/07/22/CMD%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/index.html">
+<meta property="og:title" content="Unity-小狐狸项目回顾1-认识unity的界面">
+<meta property="og:url" content="https://bao-gai-yu.github.io/2022/09/10/Unity-%E5%B0%8F%E7%8B%90%E7%8B%B8%E9%A1%B9%E7%9B%AE%E5%9B%9E%E9%A1%BE1/index.html">
 <meta property="og:site_name" content="宝盖于的博客">
-<meta property="og:description" content="水一篇CMD常用指令   盘符名称+冒号 例：G: 作用：切换到某个盘  dir 作用：显示当前路径下的所有文件和文件夹，包括隐藏文件！  cd 目录 作用：进入一个单级目录 tips：不一定完整输入目录名称，输入开头之后可以按Tab键自动补全  cd .. 作用：返回上一级目录  cd 目录1\目录2 例：cd MyBlog\source\_posts 作用：进入多级目录  cd \ 作用：回到">
+<meta property="og:description" content="Unity引擎随着技术的不断进步，生产力正在不断的提高。在21世纪的今天，我们得以站在前人的肩膀上，利用前辈们不断积累下来的技术，使用游戏引擎方便的进行游戏开发。 今年暑假，我跟着B站up主@M_studio的视频教程，完成了“小狐狸”项目demo的开发。如果只是学过，做完了。那也仅仅只是做完了，如果不进行整理，那学习中的收获只会是暂时的，因此，我会用几篇博客文章，来对我的开发过程进行整理和回顾。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://bao-gai-yu.github.io/img/Banner-CMD.png">
-<meta property="article:published_time" content="2022-07-22T03:35:39.000Z">
-<meta property="article:modified_time" content="2022-09-09T02:23:54.328Z">
+<meta property="og:image" content="https://bao-gai-yu.github.io/img/Banner-UnityFox.png">
+<meta property="article:published_time" content="2022-09-10T04:22:22.000Z">
+<meta property="article:modified_time" content="2022-09-10T07:04:47.424Z">
 <meta property="article:author" content="宝盖于-BaoGaiYu">
-<meta property="article:tag" content="CMD">
+<meta property="article:tag" content="Unity">
+<meta property="article:tag" content="游戏开发">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://bao-gai-yu.github.io/img/Banner-CMD.png">
+<meta name="twitter:image" content="https://bao-gai-yu.github.io/img/Banner-UnityFox.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>CMD常用指令 - 宝盖于的博客</title>
+  <title>Unity-小狐狸项目回顾1-认识unity的界面 - 宝盖于的博客</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -212,7 +213,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="CMD常用指令"></span>
+            <span id="subtitle" data-typed-text="Unity-小狐狸项目回顾1-认识unity的界面"></span>
           
         </div>
 
@@ -223,8 +224,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-07-22 11:35" pubdate>
-          2022年7月22日 中午
+        <time datetime="2022-09-10 12:22" pubdate>
+          2022年9月10日 中午
         </time>
       </span>
     
@@ -235,7 +236,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          715 字
+          1.7k 字
         
       </span>
     
@@ -246,7 +247,7 @@
         
         
         
-          6 分钟
+          15 分钟
         
       </span>
     
@@ -292,57 +293,95 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">CMD常用指令</h1>
+            <h1 style="display: none">Unity-小狐狸项目回顾1-认识unity的界面</h1>
             
             
               <div class="markdown-body">
                 
-                <p>水一篇CMD常用指令</p>
-<hr>
+                <h1 id="Unity引擎"><a href="#Unity引擎" class="headerlink" title="Unity引擎"></a>Unity引擎</h1><p>随着技术的不断进步，生产力正在不断的提高。在21世纪的今天，我们得以站在前人的肩膀上，利用前辈们不断积累下来的技术，使用游戏引擎方便的进行游戏开发。</p>
+<p>今年暑假，我跟着B站up主<a target="_blank" rel="noopener" href="https://space.bilibili.com/370283072">@M_studio</a>的视频教程，完成了“小狐狸”项目demo的开发。如果只是学过，做完了。那也仅仅只是做完了，如果不进行整理，那学习中的收获只会是暂时的，因此，我会用几篇博客文章，来对我的开发过程进行整理和回顾。</p>
+<h2 id="认识Unity界面"><a href="#认识Unity界面" class="headerlink" title="认识Unity界面"></a>认识Unity界面</h2><p>打开Unity，大概会是这样的一个界面：</p>
+<img src="/2022/09/10/Unity-%E5%B0%8F%E7%8B%90%E7%8B%B8%E9%A1%B9%E7%9B%AE%E5%9B%9E%E9%A1%BE1/1.png" srcset="/img/loading.gif" lazyload class="" title="Unity的界面">
+
+<p>接下来将进行一一分解。</p>
+<h3 id="Scene页面"><a href="#Scene页面" class="headerlink" title="Scene页面"></a>Scene页面</h3><img src="/2022/09/10/Unity-%E5%B0%8F%E7%8B%90%E7%8B%B8%E9%A1%B9%E7%9B%AE%E5%9B%9E%E9%A1%BE1/Scene.png" srcset="/img/loading.gif" lazyload class="" title="Scene界面">
+
+<p>当前位于<code>Scene</code>页面，显示的是游戏当前的场景，搭建游戏地图等都在其中进行，并且它提供了一些工具供开发使用。<img src="/2022/09/10/Unity-%E5%B0%8F%E7%8B%90%E7%8B%B8%E9%A1%B9%E7%9B%AE%E5%9B%9E%E9%A1%BE1/ToolKit.png" srcset="/img/loading.gif" lazyload class=""></p>
+<p>从上到下依次为：</p>
 <ol>
-<li><p>盘符名称+冒号</p>
-<p>例：<code>G:</code></p>
-<p>作用：切换到某个盘</p>
+<li><p><strong>View Tool (Q)</strong> ：视角工具。点击启用后鼠标会变成小手的样子。</p>
+<ul>
+<li><code>左键</code>按住可以拖动场景视角，如果同时按住了<code>Shift键</code>鼠标拖动视角会大幅度移动</li>
+<li>此时使用<code>鼠标滚轮</code>可以缩放场景视角。</li>
+<li>按下<code>Alt键</code>的同时按住鼠标<code>右键</code>，可以缩放场景视角</li>
+<li><strong>注：以上操作不会改变任何<code>Scene</code>中的物体属性。</strong></li>
+</ul>
 </li>
-<li><p><code>dir</code></p>
-<p>作用：显示当前路径下的所有文件和文件夹，<strong>包括隐藏文件！</strong></p>
+<li><p><strong>Move Tool (W)</strong> ：移动工具。在选中<code>Scene</code>中的任意对象之后，启用该工具，所选对象上会显示相应的操作工具。</p>
+<p>​    <img src="/2022/09/10/Unity-%E5%B0%8F%E7%8B%90%E7%8B%B8%E9%A1%B9%E7%9B%AE%E5%9B%9E%E9%A1%BE1/MoveTool.png" srcset="/img/loading.gif" lazyload class=""></p>
+<ul>
+<li><p>按住<code>红色(绿色)箭头</code>并拖动鼠标，可以单独调整对象的<code>X轴</code>坐标(<code>Y轴</code>坐标)。</p>
 </li>
-<li><p><code>cd 目录</code></p>
-<p>作用：进入一个单级目录</p>
-<p><strong>tips：</strong>不一定完整输入目录名称，输入开头之后可以按<code>Tab</code>键自动补全</p>
+<li><p>按住中间的蓝色方框并移动鼠标，可以同时调整对象的<code>XY</code>坐标。</p>
 </li>
-<li><p><code>cd ..</code></p>
-<p>作用：返回上一级目录</p>
+<li><p>注：其实还有一个<code>蓝色箭头</code>，用来调整<code>Z轴</code>坐标，但是我们目前处于<code>2D</code>视角下，而<code>Z轴</code>又是垂直屏幕的，所以看不到。</p>
+<p>但是只要将视角切换成<code>3D</code>视角，便能看到消失的<code>Z轴</code>了。</p>
+<p>​    <img src="/2022/09/10/Unity-%E5%B0%8F%E7%8B%90%E7%8B%B8%E9%A1%B9%E7%9B%AE%E5%9B%9E%E9%A1%BE1/Z-axis.png" srcset="/img/loading.gif" lazyload class="" title="可以看到蓝色的Z轴，而且原来的蓝色方框现在还有了红色和绿色，可以用来同时调整两个轴的值"></p>
+<p>可以看到蓝色的Z轴，而且原来的蓝色方框现在还有了红色和绿色，可以用来同时调整两个轴的值。</p>
 </li>
-<li><p><code>cd 目录1\目录2</code></p>
-<p>例：<code>cd MyBlog\source\_posts</code></p>
-<p>作用：进入多级目录</p>
+<li><p>注：按住<code>Ctrl</code>键拖动，可以让对象的坐标按照一定的步长进行变化。</p>
 </li>
-<li><p><code>cd \</code></p>
-<p>作用：回到盘根目录</p>
+</ul>
 </li>
-<li><p><code>cls</code></p>
-<p>作用：清屏</p>
+<li><p><strong>Rotate Tool (E)</strong> ：旋转工具。</p>
+<p>同样的，选中对象之后可以选择垂直哪个轴旋转。</p>
 </li>
-<li><p><code>exit</code>‘</p>
-<p>作用：退出关闭CMD</p>
+<li><p><strong>Scale Tool (R)</strong> 和 <strong>Rect Tool (T)</strong> ：比例工具和矩形工具。</p>
+<p>都是用来调节对象的<code>Scale</code>属性的。<code>Scale Tool</code>是中心拉伸，不改变对象的<code>Position</code>，也就是不改变坐标位置；而<code>Rect Tool</code>则会改变对象的位置。</p>
+</li>
+<li><p><strong>Transform Tool (Y)</strong> ：会同时显示以上除了<code>View Tool</code>的其它工具。</p>
 </li>
 </ol>
-<h2 id="环境变量"><a href="#环境变量" class="headerlink" title="环境变量"></a>环境变量</h2><p>如果想要在任意目录下都可以打开指定的软件，就可以把软件的路径配置到环境变量中。</p>
-<p>如何配置环境变量：</p>
-<p>打开电脑设置-选择高级系统设置-高级-环境变量-Path-编辑-添加</p>
-<p>比如要随时随地打开QQ：</p>
-<p>QQ是通过QQ.exe程序打开的</p>
-<p>而QQ.exe在这个路径下</p>
-<p><code>C:\Program Files (x86)\Tencent\QQ\Bin</code></p>
-<p>那么只要将这个路径添加到<strong>环境变量</strong>中，就可以在cmd中的任何路径输入QQ.exe打开QQ了</p>
-<hr>
-<p>安装了Java之后，会自动在系统环境变量中配置好环境，但是仅仅只包含了4个工具：<code>java.exe</code>，<code>javac.exe</code>，<code>javaw.exe</code>和<code>jshell.exe</code></p>
-<p>对此我们可以自己配置安装JDK时bin目录下的所有工具。在这个目录下<code>S:\Java\JDK-17.0.4\bin</code></p>
-<p>可以在<strong>系统变量</strong>中新建一个变量<code>JAVA_HOME</code>，值为<code>S:\Java\JDK-17.0.4</code>，然后在<code>Path</code>中新建<code>%JAVA_HOME%\bin</code>，即可配置好自己的Java环境。</p>
-<p>其中<code>%JAVA_HOME%</code>表示的是对<code>JAVA_HOME</code>这个变量的引用。</p>
-<p><strong>tips：</strong>win10系统可能有bug，重启后配置的环境变量失效，这时就不要再用引用了，直接写完整路径即可。</p>
+<h3 id="Game页面"><a href="#Game页面" class="headerlink" title="Game页面"></a>Game页面</h3><img src="/2022/09/10/Unity-%E5%B0%8F%E7%8B%90%E7%8B%B8%E9%A1%B9%E7%9B%AE%E5%9B%9E%E9%A1%BE1/Game.png" srcset="/img/loading.gif" lazyload class="" title="Game页面">
 
+<p>这里是游戏运行时的页面，点击上方的Play按钮，游戏即可运行当前的场景。</p>
+<p>场景的上方还有一些可调节的选项，从左到右依次是：</p>
+<ol>
+<li>改变游戏运行环境，选择<code>Game</code>表示在PC端运行，选择<code>simulator</code>模拟器运行，进而可以选择在哪款<u>移动设备</u>上运行。</li>
+<li>选择显示哪个屏幕的画面。Unity是支持游戏分屏的。举例：可以像是3DS游戏分两个屏幕，有些赛车游戏会有额外的两个屏幕分别显示后视镜的内容等。</li>
+<li>选择分辨率</li>
+<li><code>Scale</code>，改变显示的尺寸</li>
+<li><code>Play focused</code>，游戏运行时自动获得焦点，可以改成<code>maximized</code>（最大化）和<code>unfocused</code>。</li>
+<li><code>Mute Audio</code>，在游戏运行时静音。</li>
+<li><code>Unity shortcuts</code> 我不晓得有啥用，也没用到</li>
+<li><code>Stats</code>显示运行时声音以及图形性能的参数</li>
+<li><code>Gizmos</code>显示辅助框线</li>
+</ol>
+<h3 id="Hierarchy标签页"><a href="#Hierarchy标签页" class="headerlink" title="Hierarchy标签页"></a>Hierarchy标签页</h3><p>​    <img src="/2022/09/10/Unity-%E5%B0%8F%E7%8B%90%E7%8B%B8%E9%A1%B9%E7%9B%AE%E5%9B%9E%E9%A1%BE1/Hierarchy.png" srcset="/img/loading.gif" lazyload class="" title="Hierarchy中显示了当前场景下所有的对象"></p>
+<p><code>Hierarchy</code>中显示了当前场景下所有的对象。</p>
+<p>以这张图片为例。</p>
+<ul>
+<li>最上方的<code>Level_1</code>表示当前场景的名称</li>
+<li>往下每一项都代表一个<code>GameObject</code>。<ul>
+<li>蓝色名称表示该对象由<code>prefab</code>（预制件）生成，如名为<code>Player</code>的对象。点击右边的<code>&gt;</code>可以进入预制件编辑模式。</li>
+<li>对象前有一个蓝色竖条表示该对象上挂载了<code>AudioSource</code>（音源）。</li>
+<li>对象间有层级表示，就比如<code>Collections</code>对象有两个子对象<code>Cherrys</code>和<code>Gems</code>对象，而<code>Cherrys</code>对象下还有6个<code>Cherry</code>子对象。</li>
+<li>对象前可以设置在<strong>场景中是否可见</strong>以及<strong>能否在场景中选中</strong>。<ul>
+<li>注：尽管在场景中设置了不可见，游戏运行时<strong>仍然是可见的</strong>。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="Inspector标签页"><a href="#Inspector标签页" class="headerlink" title="Inspector标签页"></a>Inspector标签页</h3><p>​    <img src="/2022/09/10/Unity-%E5%B0%8F%E7%8B%90%E7%8B%B8%E9%A1%B9%E7%9B%AE%E5%9B%9E%E9%A1%BE1/Inspector.png" srcset="/img/loading.gif" lazyload class="" title="Inspector标签页中显示了对象的各种属性"></p>
+<p>可以修改对象的各种属性，以及添加<code>Component</code>（组件）等。</p>
+<h3 id="Project标签页"><a href="#Project标签页" class="headerlink" title="Project标签页"></a>Project标签页</h3><img src="/2022/09/10/Unity-%E5%B0%8F%E7%8B%90%E7%8B%B8%E9%A1%B9%E7%9B%AE%E5%9B%9E%E9%A1%BE1/Project.png" srcset="/img/loading.gif" lazyload class="" title="显示了项目的所有文件">
+
+<p>可以进行项目文件的管理，最好多建立文件夹进行良好的分类。</p>
+<h3 id="Console标签页"><a href="#Console标签页" class="headerlink" title="Console标签页"></a>Console标签页</h3><img src="/2022/09/10/Unity-%E5%B0%8F%E7%8B%90%E7%8B%B8%E9%A1%B9%E7%9B%AE%E5%9B%9E%E9%A1%BE1/Console.png" srcset="/img/loading.gif" lazyload class="" title="控制台">
+
+<p>会在这里显示<code>Warning</code>信息和<code>Error</code>信息，如果<code>Script</code>中有<code>Console.log();</code>语句，输出的信息也会在这里。</p>
+<h1 id="第一篇结束"><a href="#第一篇结束" class="headerlink" title="第一篇结束"></a>第一篇结束</h1>
                 
               </div>
             
@@ -360,7 +399,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E6%9D%82%E9%A1%B9/" class="category-chain-item">杂项</a>
+  <a href="/categories/Unity%E5%B0%8F%E7%8B%90%E7%8B%B8%E9%A1%B9%E7%9B%AE/" class="category-chain-item">Unity小狐狸项目</a>
   
   
 
@@ -375,7 +414,9 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/CMD/">#CMD</a>
+        <a href="/tags/Unity/">#Unity</a>
+      
+        <a href="/tags/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/">#游戏开发</a>
       
     </div>
   
@@ -387,8 +428,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>CMD常用指令</div>
-      <div>https://bao-gai-yu.github.io/2022/07/22/CMD常用指令/</div>
+      <div>Unity-小狐狸项目回顾1-认识unity的界面</div>
+      <div>https://bao-gai-yu.github.io/2022/09/10/Unity-小狐狸项目回顾1/</div>
     </div>
     <div class="license-meta">
       
@@ -400,7 +441,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2022年7月22日</div>
+          <div>2022年9月10日</div>
         </div>
       
       
@@ -430,18 +471,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/09/10/Unity-%E5%B0%8F%E7%8B%90%E7%8B%B8%E9%A1%B9%E7%9B%AE%E5%9B%9E%E9%A1%BE1/" title="Unity-小狐狸项目回顾1-认识unity的界面">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Unity-小狐狸项目回顾1-认识unity的界面</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/07/16/Cpp-%E5%A4%8D%E4%B9%A0%E6%95%B4%E7%90%86-2/" title="Cpp_复习整理_2_模板、重载、输入输出流">
-                        <span class="hidden-mobile">Cpp_复习整理_2_模板、重载、输入输出流</span>
+                      <a href="/2022/07/22/CMD%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/" title="CMD常用指令">
+                        <span class="hidden-mobile">CMD常用指令</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
